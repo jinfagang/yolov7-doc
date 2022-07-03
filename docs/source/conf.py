@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'YOLOv7'
+copyright = '2022, Lucas Jin'
+author = 'lucasjin'
 
 release = '0.1'
 version = '0.1.0'

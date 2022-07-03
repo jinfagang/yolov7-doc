@@ -6,29 +6,34 @@ Usage
 Installation
 ------------
 
-To use Lumache, first install it using pip:
+To use YOLOv7, first install it via git:
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   (base) $ git clone https://github.com/jinfagang/yolov7
 
-Creating recipes
+Creating Your coco dataset or Just coco
 ----------------
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+To train on coco, the commond is very simple.
+you can use the ``python train_det.py --config-file xxx.yaml --num-gpus 1`` function:
 
-.. autofunction:: lumache.get_random_ingredients
+The ``train_det.py`` will automatically apply some augmentation **only** for detection. If you want train on instance segmentation:
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
+``python train_inseg.py``.
 
-.. autoexception:: lumache.InvalidKindError
+You can try register your down dataset by:
 
-For example:
+```
+# VOC dataset in coco format
+DATASET_ROOT = "./datasets/voc"
+ANN_ROOT = DATASET_ROOT
+TRAIN_PATH = os.path.join(DATASET_ROOT, "JPEGImages")
+VAL_PATH = os.path.join(DATASET_ROOT, "JPEGImages")
+TRAIN_JSON = os.path.join(ANN_ROOT, "annotations_coco_train_2012.json")
+VAL_JSON = os.path.join(ANN_ROOT, "annotations_coco_val_2012.json")
 
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
+register_coco_instances("voc_train", {}, TRAIN_JSON, TRAIN_PATH)
+register_coco_instances("voc_val", {}, VAL_JSON, VAL_PATH)
+```
 
