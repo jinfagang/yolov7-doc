@@ -24,16 +24,18 @@ The ``train_det.py`` will automatically apply some augmentation **only** for det
 
 You can try register your down dataset by:
 
-```
-# VOC dataset in coco format
-DATASET_ROOT = "./datasets/voc"
-ANN_ROOT = DATASET_ROOT
-TRAIN_PATH = os.path.join(DATASET_ROOT, "JPEGImages")
-VAL_PATH = os.path.join(DATASET_ROOT, "JPEGImages")
-TRAIN_JSON = os.path.join(ANN_ROOT, "annotations_coco_train_2012.json")
-VAL_JSON = os.path.join(ANN_ROOT, "annotations_coco_val_2012.json")
+.. code-block:: python
+   # VOC dataset in coco format
+   DATASET_ROOT = "./datasets/voc"
+   ANN_ROOT = DATASET_ROOT
+   TRAIN_PATH = os.path.join(DATASET_ROOT, "JPEGImages")
+   VAL_PATH = os.path.join(DATASET_ROOT, "JPEGImages")
+   TRAIN_JSON = os.path.join(ANN_ROOT, "annotations_coco_train_2012.json")
+   VAL_JSON = os.path.join(ANN_ROOT, "annotations_coco_val_2012.json")
 
-register_coco_instances("voc_train", {}, TRAIN_JSON, TRAIN_PATH)
-register_coco_instances("voc_val", {}, VAL_JSON, VAL_PATH)
-```
+   register_coco_instances("voc_train", {}, TRAIN_JSON, TRAIN_PATH)
+   register_coco_instances("voc_val", {}, VAL_JSON, VAL_PATH)
+
+
+
 
